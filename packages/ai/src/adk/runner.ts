@@ -1,6 +1,6 @@
 import { createGeminiClient } from './gemini.js';
 import type { AdkAgent } from './agent.js';
-import type { AdkTool } from './tool.js';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 
 export interface RunContext {
   sessionId?: string;
@@ -28,11 +28,7 @@ export async function runAgent(agent: AdkAgent, input: string, ctx?: RunContext)
     functionDeclarations: [{
       name: tool.name,
       description: tool.description,
-      parameters: {
-        type: 'OBJECT',
-        properties: (tool.schema as any)._def.shape(), // Simplification for Zod
-        required: Object.keys((tool.schema as any)._def.shape())
-      }
+      parameters: zodToJsonSchema(tool.schema)
     }]
   }));
 
@@ -76,8 +72,6 @@ export async function runAgent(agent: AdkAgent, input: string, ctx?: RunContext)
 }
 
 export async function* streamAgent(agent: AdkAgent, input: string, ctx?: RunContext): AsyncGenerator<AgentStreamChunk> {
-  // Streaming implementation with tool support is more complex,
-  // keeping it basic for foundation but acknowledging the need for tokens/calls
   const model = createGeminiClient({ model: agent.model });
 
   const result = await model.generateContentStream({
