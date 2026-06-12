@@ -1,31 +1,22 @@
 {
   "name": "@fundos/design-system",
-  "version": "0.0.1",
-  "private": true,
-  "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "version": "0.1.0",
+  "description": "FundOS design tokens, Tailwind preset and global CSS — derived from FRONTEND_DESIGN_SYSTEM.md",
+  "main": "./src/index.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
+    ".": "./src/index.ts",
+    "./globals.css": "./src/globals.css",
+    "./tailwind-preset": "./src/tailwind-preset.ts"
   },
+  "files": ["src"],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
-    "lint": "biome check .",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run --passWithNoTests",
-    "clean": "rm -rf dist .turbo"
+    "typecheck": "tsc --noEmit"
   },
-  "dependencies": {  },
-  "peerDependencies": {  },
   "devDependencies": {
-    "tsup": "^8.5.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.0", "tailwindcss": "^4.1.0"
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.4.0"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.0.0"
   }
 }

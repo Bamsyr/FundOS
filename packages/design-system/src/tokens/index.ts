@@ -1,13 +1,11 @@
 /**
  * FundOS Design System — Token Barrel Export
- * All design tokens re-exported from a single entry point.
+ * All tokens are derived from FRONTEND_DESIGN_SYSTEM.md
  */
-
-export * from './colors'
-export * from './typography'
-export * from './spacing'
-export * from './radius'
-export * from './shadows'
-export * from './motion'
-export * from './breakpoints'
-export * from './z-index'
+export { colors } from './colors'
+export { fontFamily, fontWeight, typeScale } from './typography'
+export { spacing, paddingPresets, gapPresets } from './spacing'
+export { shadows } from './shadows'
+export { radius } from './radius'
+export { duration, easing, confidenceRingAnimation, pageTransition, dialogTransition } from './animations'
+export { breakpoints, breakpointPx, layoutRules } from './breakpoints'

@@ -1,33 +1,51 @@
 /**
- * FundOS Design System — Breakpoint Tokens
- * Source of truth: FRONTEND_DESIGN_SYSTEM.md § 6 Responsive
- *
- * 4 breakpoints: 320 / 768 / 1024 / 1440
+ * FundOS Design System — Responsive Breakpoints
+ * Source of truth: FRONTEND_DESIGN_SYSTEM.md § Responsive Breakpoints
  */
-
 export const breakpoints = {
-  /** 320px — small mobile */
-  xs:  '320px',
-  /** 640px — large mobile / landscape */
-  sm:  '640px',
-  /** 768px — tablet portrait */
-  md:  '768px',
-  /** 1024px — tablet landscape / small desktop */
-  lg:  '1024px',
-  /** 1280px — standard desktop */
-  xl:  '1280px',
-  /** 1440px — wide desktop */
-  '2xl': '1440px',
+  mobile:  320,
+  tablet:  768,
+  desktop: 1024,
+  large:   1440,
 } as const
 
-/** Min-width media query helpers (CSS-in-JS / styled use) */
-export const mediaMin = {
-  xs:    `@media (min-width: 320px)`,
-  sm:    `@media (min-width: 640px)`,
-  md:    `@media (min-width: 768px)`,
-  lg:    `@media (min-width: 1024px)`,
-  xl:    `@media (min-width: 1280px)`,
-  '2xl': `@media (min-width: 1440px)`,
+export const breakpointPx = {
+  mobile:  '320px',
+  tablet:  '768px',
+  desktop: '1024px',
+  large:   '1440px',
 } as const
 
-export type BreakpointToken = keyof typeof breakpoints
+/**
+ * Responsive layout rules per breakpoint
+ */
+export const layoutRules = {
+  mobile: {
+    padding: '16px',
+    gridGap: '12px',
+    cardStack: '1-col',
+    sidebar: 'hidden (hamburger)',
+    fontScale: '-2px on base',
+  },
+  tablet: {
+    padding: '24px',
+    gridGap: '16px',
+    cardStack: '2-col',
+    sidebar: 'collapsible 200px',
+    fontScale: 'standard',
+  },
+  desktop: {
+    padding: '24px',
+    gridGap: '24px',
+    cardStack: '3-col (varies)',
+    sidebar: 'fixed 264px',
+    fontScale: 'standard',
+  },
+  large: {
+    padding: '24px',
+    gridGap: '24px',
+    cardStack: '3-col+ (varies)',
+    sidebar: 'fixed 264px',
+    fontScale: 'standard',
+  },
+} as const

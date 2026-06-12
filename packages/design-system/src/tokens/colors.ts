@@ -1,93 +1,46 @@
 /**
  * FundOS Design System — Color Tokens
- * Source of truth: FRONTEND_DESIGN_SYSTEM.md § 2.1 Color System
- *
- * 11 semantic token families:
- * primary, neutral, success, warning, danger, info,
- * surface, border, text, overlay, brand
+ * Source of truth: FRONTEND_DESIGN_SYSTEM.md § Color System
  */
-
 export const colors = {
-  // ─── Primary (Teal) ───────────────────────────────────────────────
-  primary: {
-    50:  '#F0FDFA',
-    100: '#CCFBF1',
-    200: '#99F6E4',
-    300: '#5EEAD4',
-    400: '#2DD4BF',
-    500: '#14B8A6',
-    600: '#0F766E', // default brand accent
-    700: '#0B5E58', // hover
-    800: '#0A4744', // active/pressed
-    900: '#083D3B', // darkest
+  // Surfaces
+  surface: {
+    app:      '#F6F8FB',
+    default:  '#FFFFFF',
+    elevated: '#FCFDFE',
+    muted:    '#F2F4F7',
   },
-
-  // ─── Neutral (Gray-blue) ─────────────────────────────────────────
-  neutral: {
-    0:   '#FFFFFF',
-    25:  '#FAFAFA',
-    50:  '#F7F9FC',
-    100: '#EEF2F7',
-    200: '#E4E7EC',
-    300: '#D0D5DD',
-    400: '#98A2B3',
-    500: '#667085',
-    600: '#475467',
-    700: '#344054',
-    800: '#1D2939',
-    900: '#101828',
+  // Borders
+  border: {
+    default: '#E4E7EC',
+    strong:  '#D0D5DD',
   },
-
-  // ─── Success ──────────────────────────────────────────────────────
-  success: {
-    50:  '#ECFDF3',
-    100: '#D1FADF',
-    200: '#A6F4C5',
-    500: '#12B76A',
-    600: '#039855',
-    700: '#027A48',
-    900: '#054F31',
+  // Text
+  text: {
+    primary:   '#0F1728',
+    secondary: '#667085',
+    tertiary:  '#98A2B3',
+    inverse:   '#FFFFFF',
   },
-
-  // ─── Warning ──────────────────────────────────────────────────────
-  warning: {
-    50:  '#FFFAEB',
-    100: '#FEF0C7',
-    200: '#FEDF89',
-    500: '#F79009',
-    600: '#DC6803',
-    700: '#B54708',
-    900: '#7A2E0E',
+  // Accents
+  accent: {
+    primary:       '#0F766E',
+    primaryHover:  '#0C5F59',
+    primaryActive: '#094F4A',
+    info:          '#2E90FA',
+    success:       '#12B76A',
+    warning:       '#F79009',
+    danger:        '#F04438',
+    dangerHover:   '#D92D20',
+    lavender:      '#7A5AF8',
   },
-
-  // ─── Danger / Error ───────────────────────────────────────────────
-  danger: {
-    50:  '#FEF3F2',
-    100: '#FEE4E2',
-    200: '#FECDCA',
-    500: '#F04438',
-    600: '#D92D20',
-    700: '#B42318',
-    900: '#7A271A',
-  },
-
-  // ─── Info (Blue) ──────────────────────────────────────────────────
-  info: {
-    50:  '#EFF8FF',
-    100: '#D1E9FF',
-    200: '#B2DDFF',
-    500: '#2E90FA',
-    600: '#1570EF',
-    700: '#175CD3',
-    900: '#194185',
-  },
-
-  // ─── Confidence signal colors (FundOS-specific) ───────────────────
-  confidence: {
-    high:   '#12B76A', // strong signal
-    medium: '#F79009', // moderate signal
-    low:    '#F04438', // weak signal
-    none:   '#98A2B3', // no signal / unknown
+  // Semantic bg washes (light tints)
+  wash: {
+    success: '#EBF5F3',
+    warning: '#FFFAEB',
+    danger:  '#FEFCF7',
+    info:    '#EFF8FF',
+    primary: 'rgba(15, 118, 110, 0.03)',
   },
 } as const
 

@@ -1,0 +1,167 @@
+/**
+ * FundOS Design System — Global CSS Custom Properties
+ * Source of truth: FRONTEND_DESIGN_SYSTEM.md
+ * Import once at app root: import '@fundos/design-system/globals.css'
+ */
+
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&f[]=general-sans@400,500,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap');
+
+:root {
+  /* ── Surfaces ── */
+  --color-surface-app:      #F6F8FB;
+  --color-surface-default:  #FFFFFF;
+  --color-surface-elevated: #FCFDFE;
+  --color-surface-muted:    #F2F4F7;
+
+  /* ── Borders ── */
+  --color-border-default: #E4E7EC;
+  --color-border-strong:  #D0D5DD;
+
+  /* ── Text ── */
+  --color-text-primary:   #0F1728;
+  --color-text-secondary: #667085;
+  --color-text-tertiary:  #98A2B3;
+  --color-text-inverse:   #FFFFFF;
+
+  /* ── Accents ── */
+  --color-accent:         #0F766E;
+  --color-accent-hover:   #0C5F59;
+  --color-accent-active:  #094F4A;
+  --color-info:           #2E90FA;
+  --color-success:        #12B76A;
+  --color-warning:        #F79009;
+  --color-danger:         #F04438;
+  --color-danger-hover:   #D92D20;
+  --color-lavender:       #7A5AF8;
+
+  /* ── Washes ── */
+  --color-wash-success:   #EBF5F3;
+  --color-wash-warning:   #FFFAEB;
+  --color-wash-danger:    #FEFCF7;
+  --color-wash-info:      #EFF8FF;
+  --color-wash-primary:   rgba(15, 118, 110, 0.03);
+
+  /* ── Typography ── */
+  --font-display: 'Satoshi', 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-numeric: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ── Spacing ── */
+  --space-0:   0px;
+  --space-0-5: 2px;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ── Border Radius ── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-subtle: 0 1px 4px rgba(15, 23, 40, 0.04);
+  --shadow-sm:     0 2px 8px rgba(15, 23, 40, 0.06);
+  --shadow-md:     0 4px 12px rgba(15, 23, 40, 0.08);
+  --shadow-lg:     0 8px 16px rgba(15, 23, 40, 0.12);
+
+  /* ── Layout ── */
+  --sidebar-width:          264px;
+  --topbar-height:          72px;
+  --drawer-width:           440px;
+  --content-max-width:      1200px;
+  --modal-width:            600px;
+
+  /* ── Transitions ── */
+  --transition-fast:     150ms ease-in-out;
+  --transition-standard: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-moderate: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring:   800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Base Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-app);
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  line-height: 1.2;
+}
+
+p { max-width: 600px; text-wrap: pretty; }
+
+/* Tabular numerics for financial data */
+.numeric, [data-numeric] {
+  font-family: var(--font-numeric);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-border-default) 25%,
+    var(--color-surface-muted) 50%,
+    var(--color-border-default) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer var(--transition-spring) ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
